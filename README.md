@@ -23,10 +23,10 @@ The first run will creat a config file with the default settings below
   "HardwareSleepProcesses": 4
 } 
 ```
-**startTime and endTime**: The start and end time to run the program. To never stop running, put the startTime 5 seconds after the endTime. This needs to be in 24h time  
-**moveInterval**: The amount of seconds between the specifed actions are performed. If the computer still sleeps, consider reducing this number.
-**mouseMovement**: where or not the mouse is moved.
-**maxPixelsToMove**: The program moves the mouse down and to the right and returns to the orginal place. The amount is randomly chosen but this number chooses the maximum.  
-**keyPress**: Whether or not the shift key is pressed.  
-**HardwareSleepProcesses**: How many processes are generated to show computation on the machine. If everything else is on but the computer still sleeps. this number may need to be increases until the computations take about 5 seconds to complete.
+* **startTime and endTime**: The start and end time to run the program. To never stop running, put the startTime 5 seconds after the endTime. This needs to be in 24h time  
+* **moveInterval**: The amount of seconds between the specifed actions are performed. If the computer still sleeps, consider reducing this number.
+* **mouseMovement**: where or not the mouse is moved.
+* **maxPixelsToMove**: The program moves the mouse down and to the right and returns to the orginal place. The amount is randomly chosen but this number chooses the maximum.  
+* **keyPress**: Whether or not the shift key is pressed.  
+* **HardwareSleepProcesses**: How many processes are generated to show computation on the machine. If everything else is on but the computer still sleeps. this number may need to be increases until the computations take about 5 seconds to complete.
 
