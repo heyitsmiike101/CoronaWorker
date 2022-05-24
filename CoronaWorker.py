@@ -38,7 +38,7 @@ def simulateMovement(x: int, y: int, key, moveMouse: bool, pressButton: bool):
         pyautogui.moveRel(-x, -y, duration=0.1)
         print("Mouse: (" + str(-x) + "," + str(-y) + ")")
 
-    # Presses control on the keyboard.
+    # Presses key on the keyboard.
     if pressButton:
         print("Button press")
         keyboard.press(key)
@@ -66,7 +66,6 @@ def readSettingsJSON():
         with open(filename, "w") as outfile:
             json.dump(data, outfile, indent=2)
         outfile.close()
-
     return data
 
 
@@ -119,15 +118,7 @@ def main():
         pressButton = settings["keyPress"]
         moveInterval = settings["moveInterval"]
         maxPixelsToMove = settings["maxPixelsToMove"]
-
-        # Math to show computer activity
-        thread_list = []
-        for i in range(0, HardwareSleepProcesses):
-            t = Process(target=math)
-            thread_list.append(t)
-            t.start()
-        for i in thread_list:
-            i.join()
+        HardwareSleepProcesses = settings["HardwareSleepProcesses"]
 
         x = randint(3, maxPixelsToMove)
         y = randint(3, maxPixelsToMove)
@@ -163,9 +154,17 @@ def main():
         # otherwise the program does movement.
         # the interval that the mouse moves and left control is pressed.
         secondCountdown(moveInterval, "Seconds until movement. ")
-
         # Moves the mouse a random amount and presses left control.
         simulateMovement(x, y, Key.shift, moveMouse, pressButton)
+        # Math to show computer activity
+        thread_list = []
+        for i in range(0, HardwareSleepProcesses):
+            t = Process(target=math)
+            thread_list.append(t)
+            t.start()
+        for i in thread_list:
+            i.join()
+
         totalTime += moveInterval
         # Prints the toal runtime very 5 minutes.
         printInterval = 60 * 5
