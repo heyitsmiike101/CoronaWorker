@@ -1,4 +1,4 @@
-version = 2.5
+version = 2.6
 
 import pyautogui  # Mouse Library: pip install pyautogui
 import json
