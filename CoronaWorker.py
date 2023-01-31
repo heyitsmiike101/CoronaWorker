@@ -55,6 +55,7 @@ def readSettingsJSON():
         "maxPixelsToMove": 40,
         "keyPress": True,
         "HardwareSleepProcesses": 4,
+        "weekdaysOnly": True,
     }
 
     # If the filename is found, fill in the custom data. Otherwise fill in default settings
@@ -137,6 +138,11 @@ def main():
             currentTime - endTime
         )  # Shows as negative days when current time is before end time.
 
+        # program wont start until a certain day if that's in the config.
+        if settings["weekdaysOnly"] == True and currentTime.weekday() > 4:
+            print("Program is disabled on Weekends")
+            secondCountdown(3600, "Seconds (One Hour) until checking again.", False)
+
         # program wont start until a certain time
         if StartTimeDiff.days < 0:
             print("Program won't start until ", startTime.strftime("%H:%M"))
@@ -145,8 +151,8 @@ def main():
 
         elif endTimeDiff.days > -1:
             secondCountdown(
-                moveInterval,
-                "Seconds until checking if program will unpause. This will happen tomorrow.",
+                3600,
+                "Seconds (One Hour) until checking if program will unpause. This will happen tomorrow.",
                 False,
             )
             continue
